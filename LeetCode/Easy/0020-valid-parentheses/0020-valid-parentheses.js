@@ -1,35 +1,24 @@
-/**
- * @param {string} s
- * @return {boolean}
- */
-var isValid = function(s) {
-    const origin = s.split("");
+const isValid = function(s) {
     const checker = [];
-    const openMap = new Map();
-    const closeMap = new Map();
-    openMap.set("(", ")");
-    openMap.set("[", "]");
-    openMap.set("{", "}");
-    closeMap.set(")", "(");
-    closeMap.set("]", "[");
-    closeMap.set("}", "{");
+    const map = new Map([
+      [")", "("],
+      ["]", "["],
+      ["}", "{"],
+    ]);
 
-    for (const ch of origin) {
-      if (openMap.has(ch)) {
-        checker.push(ch);
-        continue;
-      }
-      
-      if (closeMap.has(ch)) {
-        if (checker.length === 0) return false;
-
-        const pairChar = checker.pop();
-
-        if (closeMap.get(ch) === pairChar) {
-          continue;
-        } else {
+    for (const ch of s) {
+      if (map.has(ch)) {
+        if (checker.length === 0) {
           return false;
         }
+        
+        const lastChecker = checker.pop();
+        
+        if (lastChecker !== map.get(ch)) {
+          return false; 
+        }  
+      } else {
+        checker.push(ch);
       }
     }
     

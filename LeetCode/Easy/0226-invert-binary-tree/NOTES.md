@@ -37,12 +37,14 @@ function invertTree(root) {
 
 ```
 
-</br>
+<br>
 
 ## Solution2
 57ms
 - Queue
 - BFS (Breadth-First Search)
+
+</br>
 
 ```js
 /**

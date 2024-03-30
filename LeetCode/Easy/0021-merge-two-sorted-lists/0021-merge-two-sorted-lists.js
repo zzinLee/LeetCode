@@ -20,4 +20,4 @@ function mergeTwoLists(list1, list2) {
   } else {
     return new ListNode(list2.val, mergeTwoLists(list1, list2.next));
   }
-};
+}

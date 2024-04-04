@@ -34,8 +34,16 @@ const memoized = () => {
       
       return numberMap.get(n);
     };
-  }
+};
+
+const memoizedFunc = memoized();
+
 ```
+
+<br>
+
+<img width="600" alt="memoized-예시" src="https://github.com/zzinLee/LeetCode/assets/91821887/6187023f-53be-4202-bb90-cf3920866d68">
+
 
 </br>
 

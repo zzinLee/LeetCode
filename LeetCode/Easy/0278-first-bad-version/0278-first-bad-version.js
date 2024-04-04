@@ -13,17 +13,19 @@
  * @return {function}
  */
 function solution(isBadVersion) {
-  const memoized = (n) => {
-    const badVersion = {};
-    let memoizedBadVersion = badVersion[n];
+  const memoized = () => {
+    const numberMap = new Map();
 
-    if (!memoizedBadVersion) {
-      memoizedBadVersion = isBadVersion(n);
-      badVersion[n] = memoizedBadVersion;
-    }
-
-    return memoizedBadVersion;
+    return (n) => {
+      if (!numberMap.has(n)) {
+        numberMap.set(n, isBadVersion(n));
+      }
+    
+      return numberMap.get(n);
+    };
   }
+
+  memoizedIsBadVersion = memoized();
 
     /**
      * @param {integer} n Total versions
@@ -33,33 +35,30 @@ function solution(isBadVersion) {
       let start = 1;
       let end = n;
 
-      //Binary Search
       while (start > 0 && start <= end) {
         let mid = Math.floor((end + start) / 2);
 
-        const isMidBadVersion = memoized(mid);
+        const isMidBadVersion = memoizedIsBadVersion(mid);
 
         if (!isMidBadVersion) {
           start = mid + 1;
         }
 
-        const isMidPrevBadVersion = memoized(mid - 1);
-        
-        if (isMidBadVersion && isMidPrevBadVersion) {
-          end = mid - 1;
-        }
-        
+        const isMidPrevBadVersion = memoizedIsBadVersion(mid - 1);
+
         if (isMidBadVersion && !isMidPrevBadVersion) {
           return mid;
         }
+
+        if (isMidBadVersion) {
+          end = mid - 1;
+        }
       }
 
-      //탐색 종료
-      if (start <= 0) { //전부 불량일 때
+      if (start <= 0) {
         return start;
-      } else if (start > end) { //전부 불량이 아닐 때
+      } else if (start > end) {
         return null;
       }
-
     };
 };

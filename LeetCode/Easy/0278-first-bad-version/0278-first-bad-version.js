@@ -36,7 +36,7 @@ function solution(isBadVersion) {
       let end = n;
 
       while (start > 0 && start <= end) {
-        let mid = Math.floor((end + start) / 2);
+        const mid = Math.floor((end + start) / 2);
 
         const isMidBadVersion = memoizedIsBadVersion(mid);
 

@@ -10,6 +10,8 @@ $[x, x + 1, ..., n]$ 는 불량 <br>
 이를 통해 Binary Serach 이진탐색법 접근의 힌트를 얻었고 <br>
 최대한 함수를 적게 호출하기 위하여 memoized를 사용 <br>
 
+</br>
+
 ## Memoized strategy
 
 ```js
@@ -44,7 +46,9 @@ const memoized = () => {
 
 </br>
 
-## my solution
+# Pass
+
+## solution
 
 ```js
 /**

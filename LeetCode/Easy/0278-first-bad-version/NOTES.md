@@ -42,6 +42,10 @@ const memoizedFunc = memoized();
 
 <br>
 
+위 코드를 브라우저에서 실행해보았다. <br>
+memoized 되기 전 "비싸요 이 연산" 이 로그에 찍히면서 연산을 진행하게 되지만, <br>
+같은 인자가 주어진 경우, 해당 로그를 출력하지 않는다. <br>
+
 <img width="600" alt="memoized-예시" src="https://github.com/zzinLee/LeetCode/assets/91821887/6187023f-53be-4202-bb90-cf3920866d68">
 
 

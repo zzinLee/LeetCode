@@ -12,17 +12,17 @@
  * @param {function} isBadVersion()
  * @return {function}
  */
-var solution = function(isBadVersion) {
+function solution(isBadVersion) {
   const memoized = (n) => {
-    const nums = {};
+    const badVersion = {};
+    let memoizedBadVersion = badVersion[n];
 
-    if (!nums[n]) {
-      const newNum = isBadVersion(n);
-
-      nums[n] = newNum;
+    if (!memoizedBadVersion) {
+      memoizedBadVersion = isBadVersion(n);
+      badVersion[n] = memoizedBadVersion;
     }
 
-    return nums[n];
+    return memoizedBadVersion;
   }
 
     /**
@@ -33,6 +33,7 @@ var solution = function(isBadVersion) {
       let start = 1;
       let end = n;
 
+      //Binary Search
       while (start > 0 && start <= end) {
         let mid = Math.floor((end + start) / 2);
 
@@ -43,20 +44,22 @@ var solution = function(isBadVersion) {
         }
 
         const isMidPrevBadVersion = memoized(mid - 1);
-
+        
+        if (isMidBadVersion && isMidPrevBadVersion) {
+          end = mid - 1;
+        }
+        
         if (isMidBadVersion && !isMidPrevBadVersion) {
           return mid;
         }
-
-        if (isMidBadVersion) {
-          end = mid - 1;
-        }
       }
 
-      if (start <= 0) {
+      //탐색 종료
+      if (start <= 0) { //전부 불량일 때
         return start;
-      } else if (start > end) {
+      } else if (start > end) { //전부 불량이 아닐 때
         return null;
       }
+
     };
 };

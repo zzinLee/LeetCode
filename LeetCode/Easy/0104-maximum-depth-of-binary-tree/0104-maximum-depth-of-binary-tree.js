@@ -23,11 +23,7 @@ function maxDepth(root) {
     return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
   }
   
-  if (root.left) {
-    return maxDepth(root.left) + 1;
-  }
-  
-  if (root.right) {
-    return maxDepth(root.right) + 1;
+  if (root.left || root.right) {
+    return maxDepth(root.left || root.right) + 1;
   }
 }

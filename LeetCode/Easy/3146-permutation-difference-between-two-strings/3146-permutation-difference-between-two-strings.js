@@ -3,7 +3,7 @@
  * @param {string} t
  * @return {number}
  */
-var findPermutationDifference = function(s, t) {
+function findPermutationDifference (s, t) {
   const sMap = new Map();
   const tMap = new Map();
   let ans = 0;
@@ -21,4 +21,4 @@ var findPermutationDifference = function(s, t) {
   }
   
   return ans;
-};
+}

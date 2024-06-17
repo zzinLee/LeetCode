@@ -29,9 +29,7 @@ var maximumTotalDamage = function(power) {
     
     while (prevIndex >= 0 && 
            powers[prevIndex] === currentPower - 1 ||
-           powers[prevIndex] === currentPower - 2 ||
-           powers[prevIndex] === currentPower + 1 ||
-           powers[prevIndex] === currentPower + 2
+           powers[prevIndex] === currentPower - 2
           ) { prevIndex--; }
     
     if (prevIndex >= 0) {

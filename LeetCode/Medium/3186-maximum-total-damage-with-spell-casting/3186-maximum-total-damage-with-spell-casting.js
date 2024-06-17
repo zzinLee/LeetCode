@@ -2,7 +2,7 @@
  * @param {number[]} power
  * @return {number}
  */
-var maximumTotalDamage = function(power) {
+function maximumTotalDamage(power) {
   const powerMap = new Map();
   
   for (const strength of power) {
@@ -27,7 +27,7 @@ var maximumTotalDamage = function(power) {
     
     let prevIndex = i - 1;
     
-    while (prevIndex >= 0 && 
+    while (prevIndex >= 0 &&
            powers[prevIndex] === currentPower - 1 ||
            powers[prevIndex] === currentPower - 2
           ) { prevIndex--; }
@@ -40,4 +40,4 @@ var maximumTotalDamage = function(power) {
   }
   
   return DP[len - 1];
-};
+}
